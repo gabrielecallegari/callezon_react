@@ -1,16 +1,28 @@
 import './App.css';
-import './global'
+import React, { useEffect, useState } from "react";
 import Login from './Main/Login/Login'
-import Header from './Header/Header';
 
-//{global.config.isLogged === false ? <Login/> : <p>ciao</p> }
+
 
 
 function App() {
+  const [ value , setValue ] = useState(window.isLogged)
+  const [ status , setStatus ] = useState("Accedi") 
+
+  
+  function changeValue(){
+    console.log(value);
+    setValue((current) => !current)
+  }
+
+  //{value===true && <Login/>}
   return (
     <div className="App">
-      <Header/>
-      
+      <div className="header">
+            <label className="header--label">Callezon</label>
+            <label  className="header--status" onClick={changeValue}>{status}</label> 
+        </div>
+      <Login/>
     </div>
   );
 }
