@@ -15,14 +15,14 @@ function App() {
     setValue((current) => !current)
   }
 
-  //{value===true && <Login/>}
+  
   return (
     <div className="App">
       <div className="header">
             <label className="header--label">Callezon</label>
             <label  className="header--status" onClick={changeValue}>{status}</label> 
         </div>
-      <Login/>
+        {value===true && <Login/>}
     </div>
   );
 }
