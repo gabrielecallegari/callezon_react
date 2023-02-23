@@ -20,6 +20,7 @@ class Database {
     app = initializeApp(this.firebaseConfig);
     db = getFirestore(this.app)
     
+    // Get Users from Database
     async getUsers(){
         await getDocs(collection(this.db,"users")).then(
             (querySnapshot) => {

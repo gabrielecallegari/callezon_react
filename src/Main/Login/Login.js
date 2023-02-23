@@ -58,10 +58,14 @@ export default function Login(props){
     function checkUserPassword(){
         const user = username.current.value
         const passwd = password.current.value
-        const confUser = confUsername.current.value
+        
         if(reg===false){
             //login check
-            
+            if(user==="" || passwd==="" || user===null || passwd==null){
+                setMessageError("Devi compilare tutti i campi")
+                setError(true)
+                return
+            }
             var find = false
             for(const utente in utenti){
                 if(utenti[utente].username === user && utenti[utente].password === passwd) {
@@ -80,10 +84,22 @@ export default function Login(props){
                 console.log("Fatto accesso");
             }
         }else{
-            
+            const confUser = confUsername.current.value
+            const confPasswd = confPassword.current.value
+            if(user !== confUser){
+                setError(true)
+                setMessageError("I due username non coincidono")
+                return 
+            }
+
+            if(passwd !== confPasswd){
+                setError(true)
+                setMessageError("Le due password non coincidono")
+                return 
+            }
         }
     }
-    function setRegistration(){
+    function setRegistration(){  
         setReg(old => !old)
         password.current.value=""
     }
@@ -123,7 +139,7 @@ export default function Login(props){
             
             <button className="login--button" onClick={checkUserPassword}>Loggati</button>
 
-            <label className="login--goto" onClick={setRegistration}>Non sei registrato? clicca qui</label>
+            <label className="login--goto" onClick={setRegistration}>{reg===false? "Non sei registrato? clicca qui" : "Sei già registrato? clicca qui"}</label>
         </div>
     )
 }
