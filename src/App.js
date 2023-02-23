@@ -1,6 +1,7 @@
 import './App.css';
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Login from './Main/Login/Login'
+import Database from './Database/Database';
 
 
 
@@ -8,10 +9,10 @@ import Login from './Main/Login/Login'
 function App() {
   const [ value , setValue ] = useState(window.isLogged)
   const [ status , setStatus ] = useState("Accedi") 
-
+  const db = new Database()
+  db.getUsers()
   
   function changeValue(){
-    console.log(value);
     setValue((current) => !current)
   }
 

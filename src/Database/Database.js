@@ -6,6 +6,8 @@ import { collection, getDocs, getFirestore } from "firebase/firestore"
 
 class Database {
 
+    constructor(){}
+
     // Your web app's Firebase configuration
     firebaseConfig = {
         apiKey: "AIzaSyCCS80chXmqNzrmYkpLKZd1azLlI-OTy2A",
@@ -25,7 +27,7 @@ class Database {
             (querySnapshot) => {
                 const myData = querySnapshot.docs
                 .map((doc) => ({...doc.data(), id:doc.id}))
-                return myData
+                window.myData = myData
             })
     }
 

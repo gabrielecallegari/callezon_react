@@ -1,8 +1,7 @@
-import { React ,  useRef,  useState }from "react";
+import { React ,  useEffect,  useRef,  useState }from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser , faLock , faXmark , faEye , faEyeSlash } from '@fortawesome/free-solid-svg-icons'
 import "./Login.css"
-import Database from "../../Database/Database";
 
 export default function Login(){
 
@@ -12,12 +11,15 @@ export default function Login(){
 
     const [ icon , setIcon ] = useState(faEye)
 
-    const db = new Database()
-    const utenti = db.getUsers()
+    const [ utenti , setUtenti ] = useState(window.myData)
+
     const username = useRef(null)
     const password = useRef(null) 
 
+    
+
     function changeString(){
+    
         setMyString((old)=>{
             old = (old === "password" ? "text" : "password")
             return old
@@ -30,22 +32,21 @@ export default function Login(){
     }
 
     function checkUserPassword(){
-        var user = username.current.value
-        var passwd = password.current.value
+        const user = username.current.value
+        const passwd = password.current.value
         var find = false
-        console.log(utenti);
         for(const utente in utenti){
-            console.log("SONO QUI");
-            if(utente.username === user && utente.password === passwd) {
+            if(utenti[utente].username === user && utenti[utente].password === passwd) {
                 find = true
             }
         }
         
         if(find !== true){
-            setError((value) => !value)
+            setError(true)
             password.current.value=""
             console.log("Accesso negato")
         }else{
+            setError(false)
             console.log("Fatto accesso");
         }
     }
