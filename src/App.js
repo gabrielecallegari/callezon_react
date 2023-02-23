@@ -9,13 +9,18 @@ import Database from './Database/Database';
 function App() {
   const [ value , setValue ] = useState(window.isLogged)
   const [ status , setStatus ] = useState("Accedi") 
+  // eslint-disable-next-line
   const db = new Database()
-  db.getUsers()
+  //db.getUsers()
   
   function changeValue(){
     setValue((current) => !current)
   }
 
+  function loginFromChild(val, name){
+    setValue(val)
+    setStatus("Ciao "+name)
+  }
   
   return (
     <div className="App">
@@ -23,7 +28,7 @@ function App() {
             <label className="header--label">Callezon</label>
             <label  className="header--status" onClick={changeValue}>{status}</label> 
         </div>
-        {value===true && <Login/>}
+        {value===true && <Login callback={loginFromChild}/>}
     </div>
   );
 }

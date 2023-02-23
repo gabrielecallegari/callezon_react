@@ -6,8 +6,6 @@ import { collection, getDocs, getFirestore } from "firebase/firestore"
 
 class Database {
 
-    constructor(){}
-
     // Your web app's Firebase configuration
     firebaseConfig = {
         apiKey: "AIzaSyCCS80chXmqNzrmYkpLKZd1azLlI-OTy2A",
