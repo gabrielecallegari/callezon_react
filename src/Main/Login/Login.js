@@ -2,6 +2,8 @@ import { React ,  useRef,  useState }from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser , faLock , faXmark , faEye , faEyeSlash } from '@fortawesome/free-solid-svg-icons'
 import "./Login.css"
+import Database from "../../Database/Database";
+import { v4 as uuidv4 } from 'uuid';
 
 export default function Login(props){
 
@@ -22,6 +24,7 @@ export default function Login(props){
 
     const [ reg , setReg ] = useState(false)
 
+    const db = new Database()    
     const username = useRef(null)
     const password = useRef(null) 
     const confUsername = useRef(null)
@@ -84,6 +87,7 @@ export default function Login(props){
                 console.log("Fatto accesso");
             }
         }else{
+            
             const confUser = confUsername.current.value
             const confPasswd = confPassword.current.value
             if(user !== confUser){
@@ -97,6 +101,34 @@ export default function Login(props){
                 setMessageError("Le due password non coincidono")
                 return 
             }
+            var find2 = false
+            
+            for(const utente in utenti){
+                if(utenti[utente].username === user) {
+                    find2 = true
+                }
+            }
+            if(find2 === true ){
+                setError(true)
+                setMessageError("L'username già usato")
+                return 
+            }
+
+            const mioUtente = {
+                username : confUser,
+                password : confPasswd,
+                carta : "",
+                cvv : "",
+                id : uuidv4(),
+                indirizzo : "",
+                islogged : false,
+                scadenza : ""
+            }
+
+            new Database().addNewUser(mioUtente)
+            setError(false)
+            props.callback(false,user)
+            console.log("Fatto accesso");
         }
     }
     function setRegistration(){  

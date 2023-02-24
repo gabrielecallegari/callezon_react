@@ -1,6 +1,8 @@
 // Import the functions you need from the SDKs you need
+import { faUserInjured } from "@fortawesome/free-solid-svg-icons";
 import { initializeApp } from "firebase/app";
-import { collection, getDocs, getFirestore } from "firebase/firestore"
+import { addDoc, collection, Firestore, getDocs, getFirestore } from "firebase/firestore"
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -28,6 +30,15 @@ class Database {
                 .map((doc) => ({...doc.data(), id:doc.id}))
                 window.myData = myData
             })
+    }
+
+    async addNewUser(oggetto){
+        try{
+            await addDoc(collection(this.db,"users"),oggetto)
+            console.log("Aggiunto");
+        }catch(e){
+            console.log("Errore nella scrittura nel server");
+        }
     }
 
 

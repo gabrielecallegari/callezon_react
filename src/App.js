@@ -11,7 +11,7 @@ function App() {
   const [ status , setStatus ] = useState("Accedi") 
   // eslint-disable-next-line
   const db = new Database()
-  //db.getUsers()
+  db.getUsers()
   
   function changeValue(){
     setValue((current) => !current)
