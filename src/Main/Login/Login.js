@@ -127,6 +127,7 @@ export default function Login(props){
 
             new Database().addNewUser(mioUtente)
             setError(false)
+            window.user = confUser
             props.callback(false,user)
             console.log("Fatto accesso");
         }

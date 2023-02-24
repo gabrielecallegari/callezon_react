@@ -2,6 +2,7 @@ import './App.css';
 import React, { useState } from "react";
 import Login from './Main/Login/Login'
 import Database from './Database/Database';
+import Home from './Main/Home/Home';
 
 
 
@@ -28,7 +29,10 @@ function App() {
             <label className="header--label">Callezon</label>
             <label  className="header--status" onClick={changeValue}>{status}</label> 
         </div>
-        {value===true && <Login callback={loginFromChild}/>}
+        {value===true ? <Login callback={loginFromChild}/> : 
+        <div>
+         <Home/>   
+        </div>}
     </div>
   );
 }
