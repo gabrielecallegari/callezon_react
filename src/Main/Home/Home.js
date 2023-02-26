@@ -7,6 +7,7 @@ export default function Home(){
 
    useEffect(()=>{
     getProduct()
+    console.log(products);
     // eslint-disable-next-line
    },[])
 
@@ -14,8 +15,7 @@ export default function Home(){
     async function getProduct(){
         await fetch('https://dummyjson.com/products')
         .then(res => res.json())
-        .then(res => setProducts(res.products))
-        console.log(products[0]);
+        .then(res => setProducts(res))
     }
 
 
