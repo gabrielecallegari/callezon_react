@@ -1,7 +1,6 @@
 // Import the functions you need from the SDKs you need
-import { faUserInjured } from "@fortawesome/free-solid-svg-icons";
 import { initializeApp } from "firebase/app";
-import { addDoc, collection, Firestore, getDocs, getFirestore } from "firebase/firestore"
+import { addDoc, collection, getDocs, getFirestore } from "firebase/firestore"
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries

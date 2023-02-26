@@ -22,9 +22,7 @@ export default function Login(props){
     // eslint-disable-next-line
     const [ utenti , setUtenti ] = useState(window.myData)
 
-    const [ reg , setReg ] = useState(false)
-
-    const db = new Database()    
+    const [ reg , setReg ] = useState(false)   
     const username = useRef(null)
     const password = useRef(null) 
     const confUsername = useRef(null)
