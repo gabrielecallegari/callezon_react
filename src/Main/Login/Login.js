@@ -20,9 +20,16 @@ export default function Login(props){
 
     const [ icon2 , setIcon2 ] = useState(faEye)
 
+    // eslint-disable-next-line
     const [ cookies , setCookies ] = useCookies(["name"])
     
     const [ utenti , setUtenti ] = useState(window.myData)
+
+    const nextYear = new Date();
+
+    const current = new Date();
+
+    nextYear.setFullYear(current.getFullYear() + 5);
 
     const [ reg , setReg ] = useState(false)   
     const username = useRef(null)
@@ -102,7 +109,7 @@ export default function Login(props){
                 console.log("Accesso negato")
             }else{
                 setError(false)
-                setCookies("name", user)
+                setCookies("name", user, {expires: nextYear})
                 props.callback(false,user)
                 window.isLogged = true
                 console.log("Fatto accesso");
@@ -146,7 +153,7 @@ export default function Login(props){
                 scadenza : ""
             }
 
-            setCookies("name", confUser)
+            setCookies("name", confUser, {expires: nextYear})
             new Database().addNewUser(mioUtente)
             setError(false)
             window.user = confUser

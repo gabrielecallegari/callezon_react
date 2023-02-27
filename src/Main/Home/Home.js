@@ -3,7 +3,7 @@ import './Home.css'
 
 export default function Home(){
     // eslint-disable-next-line
-    const [ products , setProducts] = useState()
+    const [ products , setProducts] = useState(window.prod)
 
     useEffect(()=>{
         if(products === undefined){
@@ -11,9 +11,8 @@ export default function Home(){
             .then(res => res.json())
             .then(res => {
                 setProducts(res.products)
+                window.prod=res.products
             }) 
-        }else{
-            console.log(products.length);
         }
     })
 

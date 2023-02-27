@@ -12,9 +12,9 @@ function App() {
 
   useEffect(()=>{
     if( cookies.name !== undefined){
-      loginFromChild(false,cookies.name)
+      setStatus("Ciao "+cookies.name)
     }
-  })
+  },[])
     
   function changeValue(){
     setValue((current) => !current)
