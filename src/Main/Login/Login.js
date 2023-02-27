@@ -30,11 +30,13 @@ export default function Login(props){
 
     useEffect(()=>{
         if(utenti === undefined){
-            getUtenti()
-            console.log("QUIU");
+            getUsers()
         }
+        // eslint-disable-next-line 
     },[])
-    function getUtenti(){
+
+
+    function getUsers(){
         new Database().getUsers(setMieiUtenti)
         
     }
@@ -73,8 +75,6 @@ export default function Login(props){
     function checkUserPassword(){
         const user = username.current.value
         const passwd = password.current.value
-        
-        console.log(utenti);
         if(reg===false){
             //login check
             if(user==="" || passwd==="" || user===null || passwd==null){
@@ -84,7 +84,7 @@ export default function Login(props){
             }
 
             if(utenti === undefined){
-                getUtenti()
+                getUsers()
             }
             var find = false
             for(const utente in utenti){

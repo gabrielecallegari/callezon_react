@@ -6,17 +6,18 @@ export default function Home(){
     const [ products , setProducts] = useState()
 
     useEffect(()=>{
-        getProduct()
-        
-        // eslint-disable-next-line
-    },[])
+        if(products === undefined){
+            fetch('https://dummyjson.com/products/')
+            .then(res => res.json())
+            .then(res => {
+                console.log(res);
+                const data = res.products;
+                console.log(data);
+                setProducts(data)
+            }) 
+        }
+    })
 
-    
-    async function getProduct(){
-        await fetch('https://dummyjson.com/products')
-        .then(res => res.json())
-        .then(res => setProducts(res)) 
-    }
     
 
     return (
