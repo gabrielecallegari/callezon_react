@@ -1,4 +1,4 @@
-import { React ,  useRef,  useState }from "react";
+import { React ,  useEffect,  useRef,  useState }from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser , faLock , faXmark , faEye , faEyeSlash } from '@fortawesome/free-solid-svg-icons'
 import "./Login.css"
@@ -28,7 +28,21 @@ export default function Login(props){
     const confUsername = useRef(null)
     const confPassword = useRef(null)
 
-    
+    useEffect(()=>{
+        if(utenti === undefined){
+            getUtenti()
+            console.log("QUIU");
+        }
+    },[])
+    function getUtenti(){
+        new Database().getUsers(setMieiUtenti)
+        
+    }
+
+    function setMieiUtenti(valore){
+        setUtenti(valore)
+        window.myData=utenti
+    }
     //function to make password visible
     function changeString1(){
     
@@ -70,8 +84,7 @@ export default function Login(props){
             }
 
             if(utenti === undefined){
-                new Database().getUsers()
-                setUtenti(window.myData)
+                getUtenti()
             }
             var find = false
             for(const utente in utenti){
@@ -88,6 +101,7 @@ export default function Login(props){
             }else{
                 setError(false)
                 props.callback(false,user)
+                window.isLogged = true
                 console.log("Fatto accesso");
             }
         }else{
@@ -132,6 +146,7 @@ export default function Login(props){
             new Database().addNewUser(mioUtente)
             setError(false)
             window.user = confUser
+            window.isLogged = true
             props.callback(false,user)
             console.log("Fatto accesso");
             setUtenti(undefined)

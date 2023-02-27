@@ -22,12 +22,12 @@ class Database {
     db = getFirestore(this.app)
     
     // Get Users from Database
-    async getUsers(){
-        await getDocs(collection(this.db,"users")).then(
+    getUsers(callback){
+        getDocs(collection(this.db,"users")).then(
             (querySnapshot) => {
                 const myData = querySnapshot.docs
                 .map((doc) => ({...doc.data(), id:doc.id}))
-                window.myData = myData
+                callback(myData)
             }).catch(console.log("Errore"))
     }
 
