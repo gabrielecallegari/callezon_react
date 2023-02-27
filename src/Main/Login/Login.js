@@ -4,6 +4,7 @@ import { faUser , faLock , faXmark , faEye , faEyeSlash } from '@fortawesome/fre
 import "./Login.css"
 import Database from "../../Database/Database";
 import { v4 as uuidv4 } from 'uuid';
+import { useCookies } from 'react-cookie';
 
 export default function Login(props){
 
@@ -19,6 +20,7 @@ export default function Login(props){
 
     const [ icon2 , setIcon2 ] = useState(faEye)
 
+    const [ cookies , setCookies ] = useCookies(["name"])
     
     const [ utenti , setUtenti ] = useState(window.myData)
 
@@ -100,6 +102,7 @@ export default function Login(props){
                 console.log("Accesso negato")
             }else{
                 setError(false)
+                setCookies("name", user)
                 props.callback(false,user)
                 window.isLogged = true
                 console.log("Fatto accesso");
@@ -143,6 +146,7 @@ export default function Login(props){
                 scadenza : ""
             }
 
+            setCookies("name", confUser)
             new Database().addNewUser(mioUtente)
             setError(false)
             window.user = confUser

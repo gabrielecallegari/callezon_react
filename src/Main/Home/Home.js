@@ -10,11 +10,10 @@ export default function Home(){
             fetch('https://dummyjson.com/products/')
             .then(res => res.json())
             .then(res => {
-                console.log(res);
-                const data = res.products;
-                console.log(data);
-                setProducts(data)
+                setProducts(res.products)
             }) 
+        }else{
+            console.log(products.length);
         }
     })
 

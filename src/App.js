@@ -1,17 +1,21 @@
 import './App.css';
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Login from './Main/Login/Login'
 import Home from './Main/Home/Home';
-
-
-
+import { useCookies } from 'react-cookie';
 
 function App() {
   const [ value , setValue ] = useState(window.isLogged)
   const [ status , setStatus ] = useState("Accedi") 
   // eslint-disable-next-line
-  
-  
+  const [ cookies , setCookies ] = useCookies(["name"])
+
+  useEffect(()=>{
+    if( cookies.name !== undefined){
+      loginFromChild(false,cookies.name)
+    }
+  })
+    
   function changeValue(){
     setValue((current) => !current)
   }
