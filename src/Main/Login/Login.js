@@ -20,7 +20,7 @@ export default function Login(props){
     const [ icon2 , setIcon2 ] = useState(faEye)
 
     
-    const [ utenti , setUtenti ] = useState()
+    const [ utenti , setUtenti ] = useState(window.myData)
 
     const [ reg , setReg ] = useState(false)   
     const username = useRef(null)
@@ -59,8 +59,7 @@ export default function Login(props){
     function checkUserPassword(){
         const user = username.current.value
         const passwd = password.current.value
-        new Database().getUsers()
-        setUtenti(window.myData)
+        
         console.log(utenti);
         if(reg===false){
             //login check
@@ -68,6 +67,11 @@ export default function Login(props){
                 setMessageError("Devi compilare tutti i campi")
                 setError(true)
                 return
+            }
+
+            if(utenti === undefined){
+                new Database().getUsers()
+                setUtenti(window.myData)
             }
             var find = false
             for(const utente in utenti){
@@ -130,6 +134,7 @@ export default function Login(props){
             window.user = confUser
             props.callback(false,user)
             console.log("Fatto accesso");
+            setUtenti(undefined)
         }
     }
     function setRegistration(){  

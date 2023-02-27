@@ -28,7 +28,7 @@ class Database {
                 const myData = querySnapshot.docs
                 .map((doc) => ({...doc.data(), id:doc.id}))
                 window.myData = myData
-            })
+            }).catch(console.log("Errore"))
     }
 
     async addNewUser(oggetto){
