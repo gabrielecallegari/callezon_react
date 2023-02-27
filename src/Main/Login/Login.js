@@ -59,7 +59,7 @@ export default function Login(props){
     function checkUserPassword(){
         const user = username.current.value
         const passwd = password.current.value
-        
+        new Database().getUsers()
         if(reg===false){
             //login check
             if(user==="" || passwd==="" || user===null || passwd==null){
