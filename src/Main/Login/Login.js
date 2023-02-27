@@ -19,8 +19,8 @@ export default function Login(props){
 
     const [ icon2 , setIcon2 ] = useState(faEye)
 
-    // eslint-disable-next-line
-    const [ utenti , setUtenti ] = useState(window.myData)
+    
+    const [ utenti , setUtenti ] = useState()
 
     const [ reg , setReg ] = useState(false)   
     const username = useRef(null)
@@ -60,6 +60,8 @@ export default function Login(props){
         const user = username.current.value
         const passwd = password.current.value
         new Database().getUsers()
+        setUtenti(window.myData)
+        console.log(utenti);
         if(reg===false){
             //login check
             if(user==="" || passwd==="" || user===null || passwd==null){
