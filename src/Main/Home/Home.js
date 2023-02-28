@@ -6,6 +6,7 @@ export default function Home(){
     const [ products , setProducts] = useState(window.prod)
 
     useEffect(()=>{
+        /*
         if(products === undefined){
             fetch('https://dummyjson.com/products/')
             .then(res => res.json())
@@ -14,6 +15,7 @@ export default function Home(){
                 window.prod=res.products
             }) 
         }
+        */
     })
 
     

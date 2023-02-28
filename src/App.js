@@ -4,6 +4,8 @@ import Login from './Main/Login/Login'
 import Home from './Main/Home/Home';
 import Profile from "./Main/Profile/Profile"
 import { useCookies } from 'react-cookie';
+import { faCircleUser } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function App() {
   const [ value , setValue ] = useState(window.isLogged)
@@ -13,7 +15,7 @@ function App() {
 
   useEffect(()=>{
     if( cookies.name !== undefined){
-      setStatus("Ciao "+cookies.name)
+      setStatus(cookies.name)
     }
     // eslint-disable-next-line
   },[])
@@ -24,15 +26,15 @@ function App() {
 
   function loginFromChild(val, name){
     setValue(val)
-    setStatus("Ciao "+name)
+    setStatus(name)
   }
   
   function GetBody(){
     if(value === true && cookies.name === undefined){
-      return <Login/>
+      return <Login callback={loginFromChild}/>
     }else{
       if(value === true && cookies.name !== undefined){
-        return <Profile/>
+        return <Profile callback={loginFromChild}/>
       }else{
         return <Home />
       }
@@ -43,7 +45,10 @@ function App() {
     <div className="App">
       <div className="header">
             <label className="header--label">Callezon</label>
-            <label  className="header--status" onClick={changeValue}>{status}</label> 
+            <div className='header--log' onClick={changeValue}>
+              <label  className="header--status" >{status}</label> 
+              <FontAwesomeIcon icon={faCircleUser} className="header--icon"/>
+            </div>
         </div>
         <GetBody />
     </div>
