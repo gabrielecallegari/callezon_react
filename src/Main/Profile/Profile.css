@@ -2,7 +2,7 @@
     text-align: center;
     background-color: #ffffff;
     font-size: 20px;
-    margin: 60px 38% ;
+    margin: 60px 34% ;
     padding: 10px;
     border-radius: 5px;
     display: grid;
@@ -17,4 +17,37 @@
     padding: 8px;
     color: white;
     border-radius: 10px;
+}
+/*
+.profile--card{
+    background-color: rgba(0, 0, 255, 0.515);
+}
+*/
+
+.card{
+    margin-left: 10px;
+}
+
+.card--info{
+    align-items: center;
+}
+
+.card--key{
+    margin-left: 10px;
+}
+
+@media screen and (max-width: 768px) {
+    
+    .profile{
+        margin: 60px 28% ;
+    }
+    
+}
+
+@media screen and (max-width: 450px) {
+    
+    .profile{
+        margin: 60px 10% ;
+    }
+    
 }

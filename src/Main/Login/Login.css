@@ -107,7 +107,7 @@
     }
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 520px) {
     .login{
         text-align: center;
         background-color: #ffffff;
