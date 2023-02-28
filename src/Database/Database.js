@@ -27,6 +27,7 @@ class Database {
             (querySnapshot) => {
                 const myData = querySnapshot.docs
                 .map((doc) => ({...doc.data(), id:doc.id}))
+                window.myData = myData
                 callback(myData)
             })
     }
