@@ -3,12 +3,9 @@ import './Profile.css'
 import Database from "../../Database/Database";
 import Loading from '../Loading/Loading'
 import { useCookies } from 'react-cookie';
-import { faCreditCard } from "@fortawesome/free-solid-svg-icons";
-import { faCalendarDays } from "@fortawesome/free-solid-svg-icons";
-import { faKey } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
-
+import Card from "./Card/Card";
 
 
 
@@ -18,6 +15,8 @@ export default function Profile(props){
     const [ cookies , setCookies , removeCookies] = useCookies(["name"])
 
     const [ visible , setVisible ] = useState(false)
+
+    const [ date , setDate ] = useState()
 
     const [ card4 , setCard4] = useState()
     const [ indirizzo, setIndirizzo ] = useState()
@@ -44,7 +43,7 @@ export default function Profile(props){
             setVisible(false)
             window.isLogged=false
             removeCookies("name")
-            props.callback(false,undefined)
+            props.callback(false,"Login")
         }
     }
 
@@ -56,6 +55,7 @@ export default function Profile(props){
                 const ultimo = valore[utente].carta.split(" ")
                 setCard4(ultimo[ultimo.length-1])
                 setIndirizzo(valore[utente].indirizzo)
+                setDate(valore[utente].scadenza)
             } 
         }   
     }
@@ -67,16 +67,7 @@ export default function Profile(props){
                 <div className="line"></div>
                 <label className="profile--title">Carta di credito</label>
                 <div className="profile--card">
-                    <div className="card--number">
-                        <FontAwesomeIcon icon={faCreditCard}/>
-                        <label className="card">Termina per {card4}</label>
-                    </div>
-                    <div className="card--info">
-                        <FontAwesomeIcon icon={faCalendarDays}/>
-                        <label className="card--date">{user.scadenza}</label>
-                        <FontAwesomeIcon icon={faKey} className="card--key" />
-                        <label className="card--cvv">***</label>
-                    </div>
+                    <Card number={card4} date={date}/> 
                 </div>
                 <div className="line"></div>
                 <label className="profile--title">Indirizzo</label>

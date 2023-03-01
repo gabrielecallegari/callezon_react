@@ -3,9 +3,11 @@ import React, { useEffect, useState } from "react";
 import Login from './Main/Login/Login'
 import Home from './Main/Home/Home';
 import Profile from "./Main/Profile/Profile"
+import Card from './Main/Profile/Card/Card';
 import { useCookies } from 'react-cookie';
 import { faCircleUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 
 function App() {
   const [ value , setValue ] = useState(window.isLogged)

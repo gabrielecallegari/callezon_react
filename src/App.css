@@ -4,6 +4,7 @@ html,body{
 }
 *{
   user-select: none;
+  font-weight: 500;
 }
 
 .header{
