@@ -21,6 +21,10 @@ export default function Profile(props){
     const [ card4 , setCard4] = useState()
     const [ indirizzo, setIndirizzo ] = useState()
 
+    const [ cartaLabel , setCartaLabel ] = useState("Modifica i dati")
+
+    const [ indirizzoLabel , setIndirizzoLabel ] = useState("Modifica l'indirizzo")
+
     useEffect(()=>{
         if(user===undefined){
             getUsers()
@@ -56,9 +60,17 @@ export default function Profile(props){
                 setCard4(ultimo[ultimo.length-1])
                 setIndirizzo(valore[utente].indirizzo)
                 setDate(valore[utente].scadenza)
+                if(valore[utente].carta === ""){
+                    setCartaLabel("Inserisci una nuova carta")
+                }
+
+                if(valore[utente].indirizzo === ""){
+                    setIndirizzoLabel("Inserisci un uovo indirizzo")
+                }
             } 
         }   
     }
+
 
     function MyReg(){
         return(
@@ -67,16 +79,21 @@ export default function Profile(props){
                 <div className="line"></div>
                 <label className="profile--title">Carta di credito</label>
                 <div className="profile--card">
-                    <Card number={card4} date={date}/> 
+                    {user.carta==="" ? <label>Nessuna carta registrata</label> : <Card number={card4} date={date}/>}
+                     
                 </div>
-                <button className="profile--modify">Modifica i dati</button>
+                <button className="profile--modify">{cartaLabel}</button>
                 <div className="line"></div>
-                <label className="profile--title">Indirizzo</label>
+                <label className="profile--title">Indirizzo di spedizione</label>
                 <div className="profile--indirizzo">
-                    <FontAwesomeIcon icon={faLocationDot}/>
-                    <label className="profile--location">{indirizzo}</label>
+                    {user.indirizzo === ""? <label>Nessun indirizzo registrato</label> :
+                    <div>
+                        <FontAwesomeIcon icon={faLocationDot}/>
+                        <label className="profile--location">{indirizzo}</label>
+                    </div>
+                }
                 </div>
-                <button className="profile--modify">Modifica l'indirizzo</button>
+                <button className="profile--modify">{indirizzoLabel}</button>
                 <div className="line"></div>
 
                 
