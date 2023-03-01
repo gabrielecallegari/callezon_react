@@ -11,6 +11,7 @@
 }
 
 .profile--logout{
+    margin-top: 10px;
     width: fit-content;
     border: 0px;
     background-color: red;
@@ -54,10 +55,10 @@
 
 .profile--modify{
     border:0;
-    margin: 0 20%;
+    margin: 5px 20%;
     margin-top: 10px;
     font-size: 18px;
-    padding: 10px;
+    padding: 5px;
     color: white;
     background-color: blue;
     border-radius: 10px;

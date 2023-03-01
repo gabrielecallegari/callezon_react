@@ -69,15 +69,17 @@ export default function Profile(props){
                 <div className="profile--card">
                     <Card number={card4} date={date}/> 
                 </div>
+                <button className="profile--modify">Modifica i dati</button>
                 <div className="line"></div>
                 <label className="profile--title">Indirizzo</label>
                 <div className="profile--indirizzo">
                     <FontAwesomeIcon icon={faLocationDot}/>
                     <label className="profile--location">{indirizzo}</label>
                 </div>
+                <button className="profile--modify">Modifica l'indirizzo</button>
                 <div className="line"></div>
 
-                <button className="profile--modify">Modifica i dati</button>
+                
 
                 <button className="profile--logout" onClick={logout}>Logout</button>
             </div>
