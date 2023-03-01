@@ -7,23 +7,26 @@ import { faCreditCard } from "@fortawesome/free-solid-svg-icons";
 import { faCalendarDays } from "@fortawesome/free-solid-svg-icons";
 import { faKey } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 
 
 
 
 export default function Profile(props){
     const [ user , setUser ] = useState()
+    // eslint-disable-next-line
     const [ cookies , setCookies , removeCookies] = useCookies(["name"])
 
     const [ visible , setVisible ] = useState(false)
 
     const [ card4 , setCard4] = useState()
+    const [ indirizzo, setIndirizzo ] = useState()
 
     useEffect(()=>{
         if(user===undefined){
             getUsers()
         }  
-    },[])
+    })
 
     function getUsers(){
         if(window.myData===undefined){
@@ -52,6 +55,7 @@ export default function Profile(props){
                 setVisible(true)
                 const ultimo = valore[utente].carta.split(" ")
                 setCard4(ultimo[ultimo.length-1])
+                setIndirizzo(valore[utente].indirizzo)
             } 
         }   
     }
@@ -60,7 +64,8 @@ export default function Profile(props){
         return(
             <div className="profile">
                 <label>Bentornato {user.username}</label>
-
+                <div className="line"></div>
+                <label className="profile--title">Carta di credito</label>
                 <div className="profile--card">
                     <div className="card--number">
                         <FontAwesomeIcon icon={faCreditCard}/>
@@ -73,6 +78,15 @@ export default function Profile(props){
                         <label className="card--cvv">***</label>
                     </div>
                 </div>
+                <div className="line"></div>
+                <label className="profile--title">Indirizzo</label>
+                <div className="profile--indirizzo">
+                    <FontAwesomeIcon icon={faLocationDot}/>
+                    <label className="profile--location">{indirizzo}</label>
+                </div>
+                <div className="line"></div>
+
+                <button className="profile--modify">Modifica i dati</button>
 
                 <button className="profile--logout" onClick={logout}>Logout</button>
             </div>
