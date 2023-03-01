@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 
 
 window.isLogged = false
+window.screen.orientation.lock("portrait")
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
