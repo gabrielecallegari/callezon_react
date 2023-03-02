@@ -16,6 +16,8 @@ export default function Profile(props){
 
     const [ visible , setVisible ] = useState(false)
 
+    const [ which , setWhich ] = useState(0)
+
     const [ date , setDate ] = useState()
 
     const [ card4 , setCard4] = useState()
@@ -71,6 +73,25 @@ export default function Profile(props){
         }   
     }
 
+    function NuovaCarta(){
+        return (
+            <div>
+                nuova carta
+            </div>
+        )
+    }
+
+    function Indirizzamento(){
+        switch(which){
+            case 0:
+                return MyReg()
+                break
+            
+            case 1:
+                return NuovaCarta()
+                break;
+        }
+    }
 
     function MyReg(){
         return(
@@ -79,16 +100,16 @@ export default function Profile(props){
                 <div className="line"></div>
                 <label className="profile--title">Carta di credito</label>
                 <div className="profile--card">
-                    {user.carta==="" ? <label>Nessuna carta registrata</label> : <Card number={card4} date={date}/>}
+                    {user.carta==="" ? <label className="ind">Nessuna carta registrata</label> : <Card number={card4} date={date}/>}
                      
                 </div>
                 <button className="profile--modify">{cartaLabel}</button>
                 <div className="line"></div>
                 <label className="profile--title">Indirizzo di spedizione</label>
                 <div className="profile--indirizzo">
-                    {user.indirizzo === ""? <label>Nessun indirizzo registrato</label> :
+                    {user.indirizzo === ""? <label >Nessun indirizzo registrato</label> :
                     <div>
-                        <FontAwesomeIcon icon={faLocationDot}/>
+                        <FontAwesomeIcon icon={faLocationDot} className="profile--icon-location"/>
                         <label className="profile--location">{indirizzo}</label>
                     </div>
                 }
@@ -107,7 +128,7 @@ export default function Profile(props){
 
     return (
         <div>
-            { visible === false ? <Loading/> : <MyReg/> }
+            { visible === false ? <Loading/> : <Indirizzamento /> }
         </div>
     )
 }

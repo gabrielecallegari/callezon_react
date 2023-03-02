@@ -67,6 +67,10 @@
     cursor: pointer;
 }
 
+.profile--icon-location{
+    color: red;
+}
+
 @media screen and (max-width: 768px) {
     
     .profile{
@@ -89,4 +93,8 @@
         margin: 60px 10px ;
     }
     
+}
+
+.ind{
+    margin-bottom: -10px;
 }
