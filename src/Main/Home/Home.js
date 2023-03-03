@@ -25,7 +25,6 @@ export default function Home(){
     return (
         <div className="home">
             sei nella home
-            <NewCard/>
         </div>
     )
 }
