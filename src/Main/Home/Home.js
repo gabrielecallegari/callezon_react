@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import './Home.css'
-import NewCard from "../Profile/NewCard/NewCard";
 
 export default function Home(){
     // eslint-disable-next-line
