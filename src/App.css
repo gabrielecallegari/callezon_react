@@ -2,6 +2,10 @@ html,body{
   margin: 0;
   padding: 0;
 }
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 *{
   user-select: none;
   font-weight: 500;
@@ -38,4 +42,29 @@ html,body{
 
 .header--icon{
   font-size: 22px;
+}
+
+.newCard--data{
+  display: flex;
+}
+
+.newCard--cvv{
+  margin-left: 20px;
+}
+
+.newCard--registration{
+  background-color: blue;
+  color: white;
+  padding: 10px;
+  margin: 20px 40px;
+  border-radius: 10px;
+}
+
+.newCard--errore-label{
+  margin-left: 5px;
+}
+
+.newCard--errore{
+  color: red;
+  margin-top: 10px;
 }
