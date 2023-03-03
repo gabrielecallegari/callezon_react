@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import './Home.css'
 
+import NewCard from "../Profile/NewCard/NewCard";
+
 export default function Home(){
     // eslint-disable-next-line
     const [ products , setProducts] = useState(window.prod)
@@ -23,6 +25,7 @@ export default function Home(){
     return (
         <div className="home">
             sei nella home
+            <NewCard/>
         </div>
     )
 }

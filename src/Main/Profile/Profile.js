@@ -6,6 +6,7 @@ import { useCookies } from 'react-cookie';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import Card from "./Card/Card";
+import NewCard from "./NewCard/NewCard";
 
 
 
@@ -53,6 +54,10 @@ export default function Profile(props){
         }
     }
 
+    function callback(value){
+        setWhich(value)
+    }
+
     function setMieiUtenti(valore){
         for(const utente in valore){
             if(valore[utente].username+"" === cookies.name+""){
@@ -73,25 +78,7 @@ export default function Profile(props){
         }   
     }
 
-    function NuovaCarta(){
-        return (
-            <div>
-                nuova carta
-            </div>
-        )
-    }
-
-    function Indirizzamento(){
-        switch(which){
-            case 0:
-                return MyReg()
-                break
-            
-            case 1:
-                return NuovaCarta()
-                break;
-        }
-    }
+    
 
     function MyReg(){
         return(
@@ -103,7 +90,7 @@ export default function Profile(props){
                     {user.carta==="" ? <label className="ind">Nessuna carta registrata</label> : <Card number={card4} date={date}/>}
                      
                 </div>
-                <button className="profile--modify">{cartaLabel}</button>
+                <button className="profile--modify" onClick={()=>{setWhich(1)}}>{cartaLabel}</button>
                 <div className="line"></div>
                 <label className="profile--title">Indirizzo di spedizione</label>
                 <div className="profile--indirizzo">
@@ -124,7 +111,19 @@ export default function Profile(props){
         )
     }
     
+    function Indirizzamento(){
+        switch(which){
+            case 0:
+                return MyReg()
+            
+            case 1:
+                return <NewCard callback={callback}/>
 
+            default:
+                console.log("Default");
+                break
+        }
+    }
 
     return (
         <div>
