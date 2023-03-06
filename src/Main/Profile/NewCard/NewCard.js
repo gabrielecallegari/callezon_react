@@ -65,8 +65,12 @@ export default function NewCard(props){
             return
         }
 
-        
-        new Database().updateCreditCard()
+        const miaCarta = {
+            carta: carta,
+            cvv: cvv,
+            scadenza: data
+        }
+        new Database().updateCreditCard(miaCarta)
         props.callback(0)
     }
 

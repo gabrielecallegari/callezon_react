@@ -51,6 +51,7 @@ class Database {
             })
         }catch(e){
             console.log("Errore nell'update carta del server");
+            a
         }
     }
 
