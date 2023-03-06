@@ -99,6 +99,7 @@ export default function Login(props){
             for(const utente in utenti){
                 if(utenti[utente].username === user && utenti[utente].password === passwd) {
                     find = true
+                    window.user=""
                     window.user=utenti[utente]
                     console.log(window.user);
                 }

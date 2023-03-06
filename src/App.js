@@ -17,6 +17,8 @@ function App() {
   useEffect(()=>{
     if( cookies.name !== undefined){
       setStatus(cookies.name)
+    }else{
+      
     }
     // eslint-disable-next-line
   },[])
