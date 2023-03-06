@@ -15,6 +15,13 @@ export default function NewCard(props){
     const data = useRef(null)
     const cvv = useRef(null)
 
+    function addSpace(){
+        console.log(carta.current.value);
+        if(String(carta.current.value).length === 4){
+           
+        }
+    }
+
 
     function back(){
         props.callback(0)
@@ -100,7 +107,7 @@ export default function NewCard(props){
                 <label className="intestatario">Numero carta</label>
                 <div className="newCard--input">
                     <FontAwesomeIcon icon={faCreditCard} className="input--icon"/>
-                    <input type="number" ref={carta} placeholder="Es: 1111 1111 1111 1111" className="intestatario--input"></input>
+                    <input type="number" ref={carta} onChange={addSpace} placeholder="Es: 1111 1111 1111 1111" className="intestatario--input"></input>
                 </div>
                 
                 <div className="newCard--data">

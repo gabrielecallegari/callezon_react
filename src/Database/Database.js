@@ -61,6 +61,7 @@ class Database {
         const docSnap = await getDoc(docRef)
         console.log("Letto "+docSnap.data);
         window.user=docSnap.data
+        console.log(window.user);
     }
 
 }
