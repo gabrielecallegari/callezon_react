@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import './NewCard.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faPerson, faEnvelope, faCalendarDays, faKey, faCreditCard, faXmark } from "@fortawesome/free-solid-svg-icons";
-
+import Database from "../../../Database/Database";
 
 export default function NewCard(props){
 
@@ -65,8 +65,8 @@ export default function NewCard(props){
             return
         }
 
-
-
+        
+        new Database().updateCreditCard()
         props.callback(0)
     }
 

@@ -99,6 +99,8 @@ export default function Login(props){
             for(const utente in utenti){
                 if(utenti[utente].username === user && utenti[utente].password === passwd) {
                     find = true
+                    window.user=utenti[utente]
+                    console.log(window.user);
                 }
             }
             
@@ -156,7 +158,7 @@ export default function Login(props){
             setCookies("name", confUser, {expires: nextYear})
             new Database().addNewUser(mioUtente)
             setError(false)
-            window.user = confUser
+            window.user = mioUtente
             window.isLogged = true
             props.callback(false,user)
             console.log("Fatto accesso");

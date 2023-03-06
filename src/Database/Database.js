@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { addDoc, collection, getDocs, getFirestore } from "firebase/firestore"
+import { addDoc, collection, getDocs, getFirestore, updateDoc, doc } from "firebase/firestore"
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -41,6 +41,18 @@ class Database {
         }
     }
 
+    async updateCreditCard(cartaDati){
+        const cartaRef = doc(this.db, "users", window.user.id)
+        try{
+            await updateDoc(cartaRef, {
+                carta: cartaDati.carta,
+                cvv: cartaDati.cvv,
+                scadenza: cartaDati.scadenza
+            })
+        }catch(e){
+            console.log("Errore nell'update carta del server");
+        }
+    }
 
 }
 
