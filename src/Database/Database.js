@@ -45,13 +45,12 @@ class Database {
         const cartaRef = doc(this.db, "users", window.user.id)
         try{
             await updateDoc(cartaRef, {
-                carta: cartaDati.carta,
-                cvv: cartaDati.cvv,
-                scadenza: cartaDati.scadenza
+                carta: cartaDati.carta+"",
+                cvv: cartaDati.cvv+"",
+                scadenza: cartaDati.scadenza+""
             })
         }catch(e){
-            console.log("Errore nell'update carta del server");
-            a
+            console.log("Errore nell'update carta del server "+e);
         }
     }
 
