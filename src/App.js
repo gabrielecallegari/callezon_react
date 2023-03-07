@@ -6,7 +6,7 @@ import Profile from "./Main/Profile/Profile"
 import { useCookies } from 'react-cookie';
 import { faCircleUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
+import Database from './Database/Database';
 
 function App() {
   const [ value , setValue ] = useState(window.isLogged)
@@ -16,9 +16,8 @@ function App() {
 
   useEffect(()=>{
     if( cookies.name !== undefined){
+      new Database().getUserData(cookies.name)
       setStatus(cookies.name)
-    }else{
-      
     }
     // eslint-disable-next-line
   },[])

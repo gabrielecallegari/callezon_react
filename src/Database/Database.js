@@ -1,5 +1,5 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
+import { initializeApp  } from "firebase/app";
 import { addDoc, collection, getDocs, getFirestore, updateDoc, doc, getDoc } from "firebase/firestore"
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -42,26 +42,34 @@ class Database {
     }
 
     async updateCreditCard(cartaDati){
-        console.log(window.user);
         const cartaRef = doc(this.db, "users", window.user.id)
-        console.log(cartaDati.carta);
         try{
             await updateDoc(cartaRef, {
                 carta: cartaDati.carta,
                 cvv: cartaDati.cvv,
                 scadenza: cartaDati.scadenza
             })
+
+            window.user.carta = cartaDati.carta
+            window.user.cvv = cartaDati.cvv
+            window.user.scadenza = cartaDati.scadenza
+            console.log(window.user);
         }catch(e){
             console.log("Errore nell'update carta del server "+e);
         }
     }
 
     async getUserData(utente){
-        const docRef = doc(this.db, "users", utente)
-        const docSnap = await getDoc(docRef)
-        console.log("Letto "+docSnap.data);
-        window.user=docSnap.data
-        console.log(window.user);
+        console.log("QUI");
+        const docRef = doc(this.db, "users", "8hEKuwJF7yDo8xrE8aCt");
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+        console.log("Document data:", docSnap.data());
+        } else {
+        // doc.data() will be undefined in this case
+        console.log("No such document!");
+        }
     }
 
 }
