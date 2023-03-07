@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import './NewCard.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faPerson, faEnvelope, faCalendarDays, faKey, faCreditCard, faXmark } from "@fortawesome/free-solid-svg-icons";
+// eslint-disable-next-line
 import Database from "../../../Database/Database";
 
 export default function NewCard(props){
@@ -61,7 +62,16 @@ export default function NewCard(props){
             return
         }
 
-        if(carta.current.value === null || carta.current.value === ""){
+        if(!email.current.value.includes("@")){
+            setError(true)
+            setMessage("Email inserita non valida")
+            setTimeout(()=>{
+                setError(false)
+            },3000)
+            return
+        }
+
+        if(carta === null || carta === ""){
             setError(true)
             setMessage("Compilare il campo Numero carta")
             setTimeout(()=>{
@@ -69,13 +79,56 @@ export default function NewCard(props){
             },3000)
             return
         }
-        if(data.current.value === null || data.current.value === ""){
+        if(carta.length !== 19){
+            setError(true)
+            setMessage("Numero carta non corretto")
+            setTimeout(()=>{
+                setError(false)
+            },3000)
+            return
+        }
+        const change = carta.split(" ")
+        for (let index = 0; index < change.length; index++) {
+            if(isNaN(change[index])){
+                setError(true)
+                setMessage("Numero carta contenente lettere")
+                setTimeout(()=>{
+                    setError(false)
+                },3000)
+                return
+            }
+            
+        }
+
+        if(data === null || data === ""){
             setError(true)
             setMessage("Compilare il campo Scadenza")
             setTimeout(()=>{
                 setError(false)
             },3000)
             return
+        }
+
+        if(data.length !== 5){
+            setError(true)
+            setMessage("Data inserita non valida")
+            setTimeout(()=>{
+                setError(false)
+            },3000)
+            return
+        }
+
+        const newData = data.split("/")
+        for (let index = 0; index < change.length; index++) {
+            if(isNaN(newData[index])){
+                setError(true)
+                setMessage("Data contentente lettere")
+                setTimeout(()=>{
+                    setError(false)
+                },3000)
+                return
+            }
+            
         }
 
         if(cvv.current.value === null || cvv.current.value === ""){
@@ -86,14 +139,35 @@ export default function NewCard(props){
             },3000)
             return
         }
+
+        if(cvv.current.value.length !== 3){
+            setError(true)
+            setMessage("Cvv non corretto")
+            setTimeout(()=>{
+                setError(false)
+            },3000)
+            return
+        }
+
+        if(isNaN(cvv.current.value)){
+            setError(true)
+            setMessage("Cvv contenente lettere")
+            setTimeout(()=>{
+                setError(false)
+            },3000)
+            return
+        }
+
+
         const miaCarta = {
-            carta: carta.current.value,
+            carta: carta,
             cvv: cvv.current.value,
-            scadenza: data.current.value
+            scadenza: data
         }
 
         console.log(miaCarta.data);
-        new Database().updateCreditCard(miaCarta)
+        console.log("Database attualmente non funzionante");
+        //new Database().updateCreditCard(miaCarta)
         props.callback(0)
     }
 
