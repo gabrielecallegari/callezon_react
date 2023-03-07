@@ -11,14 +11,29 @@ export default function NewCard(props){
 
     const intestatario = useRef(null)
     const email = useRef(null)
-    const carta = useRef(null)
-    const data = useRef(null)
     const cvv = useRef(null)
+    const [ data , setData ] =useState("")
+    const [ carta, setCarta ] = useState("")
 
-    function addSpace(){
-        console.log(carta.current.value);
-        if(String(carta.current.value).length === 4){
-           
+    function addSpace(event){
+        if(carta.length - event.target.value.length > 0){
+            setCarta("")
+        }else{
+            setCarta(event.target.value)
+            if(carta.length === 3 || carta.length === 8 || carta.length === 13){
+                setCarta(old => old+" ")
+            }
+        }
+    }
+
+    function dataChange(event){
+        if(data.length - event.target.value.length > 0){
+            setData("")
+        }else{
+            setData(event.target.value)
+            if(data.length === 1){
+                setData(old => old + "/")
+            }
         }
     }
 
@@ -107,7 +122,7 @@ export default function NewCard(props){
                 <label className="intestatario">Numero carta</label>
                 <div className="newCard--input">
                     <FontAwesomeIcon icon={faCreditCard} className="input--icon"/>
-                    <input type="number" ref={carta} onChange={addSpace} placeholder="Es: 1111 1111 1111 1111" className="intestatario--input"></input>
+                    <input type="text" maxLength="19"  value={carta} onChange={addSpace} placeholder="Es: 1111 1111 1111 1111" className="intestatario--input"></input>
                 </div>
                 
                 <div className="newCard--data">
@@ -115,14 +130,14 @@ export default function NewCard(props){
                         <label className="intestatario2" >Scadenza</label>
                         <div className="newCard--input">
                             <FontAwesomeIcon icon={faCalendarDays} className="input--icon"/>
-                            <input type="number" ref={data} placeholder="Es: 10/22"  className="intestatario--input"></input>
+                            <input type="text" maxLength="5" value={data} onChange={dataChange} placeholder="Es: 10/22"  className="intestatario--input"></input>
                         </div>
                     </div>
                     <div className="newCard--cvv">
                         <label className="intestatario2" ref={cvv}>Cvv</label>
                         <div className="newCard--input">
                             <FontAwesomeIcon icon={faKey} className="input--icon"/>
-                            <input type="number" placeholder="Es: 183" ref={cvv} className="intestatario--input"></input>
+                            <input type="text" maxLength="3" placeholder="Es: 183" ref={cvv}  className="intestatario--input"></input>
                         </div>
                     </div>
                 </div>
