@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import Card from "./Card/Card";
 import NewCard from "./NewCard/NewCard";
-
+import NewAddress from "./NewAddress/NewAddress";
 
 
 export default function Profile(props){
@@ -113,7 +113,7 @@ export default function Profile(props){
                     </div>
                 }
                 </div>
-                <button className="profile--modify">{indirizzoLabel}</button>
+                <button className="profile--modify" onClick={()=>{setWhich(2)}}>{indirizzoLabel}</button>
                 <div className="line"></div>
 
                 
@@ -130,6 +130,9 @@ export default function Profile(props){
             
             case 1:
                 return <NewCard callback={callback}/>
+
+            case 2:
+                return <NewAddress callback={callback}/>
 
             default:
                 console.log("Default");

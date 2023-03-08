@@ -88,7 +88,6 @@ export default function NewCard(props){
             return
         }
         const change = carta.split(" ")
-        console.log(change);
         for (let index = 0; index < change.length; index++) {
             if(isNaN(change[index])){
                 setError(true)
@@ -120,7 +119,6 @@ export default function NewCard(props){
         }
 
         const newData = data.split("/")
-        console.log(newData);
         for (let index = 0; index < newData.length; index++) {
             if(isNaN(newData[index])){
                 setError(true)
