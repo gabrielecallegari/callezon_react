@@ -101,7 +101,6 @@ export default function Login(props){
                     find = true
                     window.user=""
                     window.user=utenti[utente]
-                    console.log(window.user);
                 }
             }
             
@@ -113,6 +112,7 @@ export default function Login(props){
             }else{
                 setError(false)
                 setCookies("name", user, {expires: nextYear})
+                setCookies("id",window.user.id_documento, {expires: nextYear})
                 props.callback(false,user)
                 window.isLogged = true
                 console.log("Fatto accesso");

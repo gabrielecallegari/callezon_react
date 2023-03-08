@@ -16,7 +16,7 @@ function App() {
 
   useEffect(()=>{
     if( cookies.name !== undefined){
-      new Database().getUserData(cookies.name)
+      new Database().getUserData(cookies.id)
       setStatus(cookies.name)
     }
     // eslint-disable-next-line

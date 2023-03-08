@@ -55,6 +55,18 @@ export default function Profile(props){
     }
 
     function callback(value){
+        if(value===4){
+            setUser(window.user)
+            setVisible(true)
+            const ultimo = window.user.carta.split(" ")
+            setCard4(ultimo[ultimo.length-1])
+            setIndirizzo(window.user.indirizzo)
+            setDate(window.user.scadenza)
+            if(window.user.indirizzo === ""){
+                setIndirizzoLabel("Inserisci un uovo indirizzo")
+            }
+            value=0
+        }
         setWhich(value)
     }
 

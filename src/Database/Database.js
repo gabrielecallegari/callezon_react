@@ -19,14 +19,16 @@ class Database {
   
     // Initialize Firebase
     app = initializeApp(this.firebaseConfig);
-    db = getFirestore(this.app)
+    db = getFirestore(this.app)  
     
     // Get Users from Database
     getUsers(callback){
         getDocs(collection(this.db,"users")).then(
             (querySnapshot) => {
                 const myData = querySnapshot.docs
-                .map((doc) => ({...doc.data(), id:doc.id}))
+                .map((doc) => {
+                    return ({...doc.data(), id_documento:doc.id})
+                })
                 window.myData = myData
                 callback(myData)
             })
@@ -42,7 +44,7 @@ class Database {
     }
 
     async updateCreditCard(cartaDati){
-        const cartaRef = doc(this.db, "users", window.user.id)
+        const cartaRef = doc(this.db, "users", window.user.id_documento)
         try{
             await updateDoc(cartaRef, {
                 carta: cartaDati.carta,
@@ -53,19 +55,18 @@ class Database {
             window.user.carta = cartaDati.carta
             window.user.cvv = cartaDati.cvv
             window.user.scadenza = cartaDati.scadenza
-            console.log(window.user);
         }catch(e){
             console.log("Errore nell'update carta del server "+e);
         }
     }
 
     async getUserData(utente){
-        console.log("QUI");
-        const docRef = doc(this.db, "users", "8hEKuwJF7yDo8xrE8aCt");
+        const docRef = doc(this.db, "users", utente);
         const docSnap = await getDoc(docRef);
 
         if (docSnap.exists()) {
-        console.log("Document data:", docSnap.data());
+        window.user=""
+        window.user={...docSnap.data(), id_documento: utente}
         } else {
         // doc.data() will be undefined in this case
         console.log("No such document!");

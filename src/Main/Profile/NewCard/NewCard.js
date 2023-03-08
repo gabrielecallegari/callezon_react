@@ -160,17 +160,16 @@ export default function NewCard(props){
             return
         }
 
-
+        window.user.carta=carta
+        window.user.scadenza=data
+        window.user.cvv=cvv.current.value
         const miaCarta = {
             carta: carta,
             cvv: cvv.current.value,
             scadenza: data
         }
-
-        console.log(miaCarta.data);
-        console.log("Database attualmente non funzionante");
         new Database().updateCreditCard(miaCarta)
-        props.callback(0)
+        props.callback(4)
     }
 
     return(
