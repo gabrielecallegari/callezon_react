@@ -22,8 +22,44 @@
     left: 10px;
 }
 
+.newAddress--search{
+    margin-top: 20px;
+    width: 100%;
+    display: grid;
+    text-align: left;
+}
+
 .newAddress--title{
     font-size: 28px;
+}
+
+.newAddress--main{
+    display: flex;
+    border: 2px solid black;
+    border-radius: 5px;
+    align-items: center;
+    padding: 5px;
+}
+
+.newAddress--icon{
+    color: blue;
+    cursor: pointer;
+}
+
+.newAddress--input{
+    border: 0;
+    width: 100%;
+    font-size: 18px;
+    text-align: center;
+}
+
+.newAddress--input:focus{
+    outline: none;
+}
+
+.newAddress--label{
+    font-size: 15px;
+    color: rgba(0, 0, 0, 0.548);
 }
 
 @media screen and (max-width: 768px) {
