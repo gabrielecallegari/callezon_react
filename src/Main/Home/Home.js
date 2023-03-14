@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import './Home.css'
-import NewAddress from "../Profile/NewAddress/NewAddress";
-
 
 export default function Home(){
     // eslint-disable-next-line
@@ -25,8 +23,6 @@ export default function Home(){
     return (
         <div className="home">
             sei nella home
-            <NewAddress></NewAddress>
-            
         </div>
     )
 }

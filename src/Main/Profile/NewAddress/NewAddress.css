@@ -62,6 +62,34 @@
     color: rgba(0, 0, 0, 0.548);
 }
 
+.newAddress--error-icon{
+    color: red;
+    margin-right: 10px;
+}
+
+.newAddress--error-div{
+    color: red;
+    text-align: center;
+    margin-top: 10px;
+    align-items: center;
+}
+
+.newAddress--modify{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.newAddress--add{
+    color: white;
+    background-color: blue;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
 @media screen and (max-width: 768px) {
     
     .newAddress{
