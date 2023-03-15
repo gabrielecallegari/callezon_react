@@ -1,0 +1,29 @@
+.shoppingcart{
+    color: white;
+    font-size: 30px;
+}
+
+.carrello{
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background-color: blue;
+    padding: 15px;
+    border-radius: 100%;
+    cursor: pointer;
+}
+
+.carrello--div{
+    position: relative;
+}
+
+.carrello--size{
+    font-weight: 700;
+    position: absolute;
+    background-color: red;
+    padding: 3px 10px;
+    border-radius: 100%;
+    top: -25px;
+    left: -20px;
+    color: white;
+}
