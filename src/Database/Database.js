@@ -60,6 +60,18 @@ class Database {
         }
     }
 
+    async updatePosition(posizione){
+        const posRef = doc(this.db, "users", window.user.id_documento)
+        try{
+            await updateDoc(posRef, {
+                indirizzo : posizione
+            })
+            window.user.indirizzo=posizione
+        }catch(e){
+            console.log("Errore nell'update location del server "+e);
+        }
+    }
+
     async getUserData(utente){
         const docRef = doc(this.db, "users", utente);
         const docSnap = await getDoc(docRef);

@@ -63,7 +63,16 @@ export default function Profile(props){
             setIndirizzo(window.user.indirizzo)
             setDate(window.user.scadenza)
             if(window.user.indirizzo === ""){
-                setIndirizzoLabel("Inserisci un uovo indirizzo")
+                setIndirizzoLabel("Inserisci un nuovo indirizzo")
+            }
+            value=0
+        }
+        if(value===5){
+            setUser(window.user)
+            setVisible(true)
+            setIndirizzo(window.user.indirizzo)
+            if(window.user.carta === ""){
+                setCartaLabel("Inserisci una nuova carta")
             }
             value=0
         }
@@ -84,7 +93,7 @@ export default function Profile(props){
                 }
 
                 if(valore[utente].indirizzo === ""){
-                    setIndirizzoLabel("Inserisci un uovo indirizzo")
+                    setIndirizzoLabel("Inserisci un nuovo indirizzo")
                 }
             } 
         }   
