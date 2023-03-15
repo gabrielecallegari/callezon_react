@@ -24,6 +24,7 @@ input::-webkit-inner-spin-button {
 
 .header--label{
   font-size: 30px;
+  cursor: pointer;
 }
 
 .header--status{

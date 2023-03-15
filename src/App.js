@@ -46,7 +46,7 @@ function App() {
   return (
     <div className="App">
       <div className="header">
-            <label className="header--label">Callezon</label>
+            <label className="header--label" onClick={()=>setValue(false)}>Callezon</label>
             <div className='header--log' onClick={changeValue}>
               <label  className="header--status" >{status}</label> 
               <FontAwesomeIcon icon={faCircleUser} className="header--icon"/>
