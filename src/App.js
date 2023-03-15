@@ -59,13 +59,14 @@ function App() {
             </div>
         </div>
         <GetBody />
-
-        <div className="carrello" onClick={carrelloClick}>
-                <div className="carrello--div">
-                    <FontAwesomeIcon icon={faCartShopping} className="shoppingcart"/>
-                    {carrello>0 &&  <label className="carrello--size">{carrello}</label>}
-                </div>
+        {value === false &&
+          <div className="carrello" onClick={carrelloClick}>
+            <div className="carrello--div">
+                <FontAwesomeIcon icon={faCartShopping} className="shoppingcart"/>
+                {carrello>0 &&  <label className="carrello--size">{carrello}</label>}
             </div>
+          </div>
+        }
     </div>
   );
 }
