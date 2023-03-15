@@ -4,7 +4,7 @@ import Login from './Main/Login/Login'
 import Home from './Main/Home/Home';
 import Profile from "./Main/Profile/Profile"
 import { useCookies } from 'react-cookie';
-import { faCircleUser } from '@fortawesome/free-solid-svg-icons';
+import { faCircleUser , faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Database from './Database/Database';
 
@@ -13,6 +13,12 @@ function App() {
   const [ status , setStatus ] = useState("Accedi") 
   // eslint-disable-next-line
   const [ cookies , setCookies ] = useCookies(["name"])
+
+  const [ carrello , setCarrello ] = useState(0)
+
+  function carrelloClick(){
+      setCarrello(old=> old+1)
+  }
 
   useEffect(()=>{
     if( cookies.name !== undefined){
@@ -53,6 +59,13 @@ function App() {
             </div>
         </div>
         <GetBody />
+
+        <div className="carrello" onClick={carrelloClick}>
+                <div className="carrello--div">
+                    <FontAwesomeIcon icon={faCartShopping} className="shoppingcart"/>
+                    {carrello>0 &&  <label className="carrello--size">{carrello}</label>}
+                </div>
+            </div>
     </div>
   );
 }
