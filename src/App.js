@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useCookies } from 'react-cookie';
 import { faCircleUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -8,7 +8,6 @@ import { useNavigate } from 'react-router-dom';
 
 
 function App() {
-  const [ status , setStatus ] = useState("Accedi") 
   // eslint-disable-next-line
   const [ cookies , setCookies ] = useCookies(["name"])
   const router = useNavigate()
@@ -18,9 +17,6 @@ function App() {
     
     if( cookies.name !== undefined){
       new Database().getUserData(cookies.id)
-      setStatus(cookies.name)
-    }else{
-      setStatus("Accedi")
     }
     // eslint-disable-next-line
   },[])
@@ -43,7 +39,6 @@ function App() {
       <div className="header">
             <label className="header--label" onClick={()=>router("/")}>Callezon</label>
             <div className='header--log' onClick={getBody}>
-              <label  className="header--status" >{status}</label> 
               <FontAwesomeIcon icon={faCircleUser} className="header--icon"/>
             </div>
         </div>
