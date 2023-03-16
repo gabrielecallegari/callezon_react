@@ -37,6 +37,18 @@ class Database {
     async addNewUser(oggetto){
         try{
             await addDoc(collection(this.db,"users"),oggetto)
+            await getDocs(collection(this.db,"users")).then(
+                (querySnapshot) => {
+                    querySnapshot.docs
+                    .map((doc) => {
+                        if(doc.data().username===oggetto.username){
+                            window.user.id_documento=doc.id
+                        }
+                        return ({...doc.data(), id_documento:doc.id})
+                    })
+                    
+                    
+                })
             console.log("Aggiunto");
         }catch(e){
             console.log("Errore nella scrittura nel server");
