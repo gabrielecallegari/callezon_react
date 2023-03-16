@@ -8,6 +8,7 @@ import PageNotFound from './Main/PageNotFound/PageNotFound';
 import Login from './Main/Login/Login'
 import Home from './Main/Home/Home';
 import Profile from './Main/Profile/Profile'
+import Detail from './Main/Home/Detail/Detail'
 
 
 window.isLogged = false
@@ -22,6 +23,7 @@ root.render(
           <Route path="*" element={<PageNotFound />} />
           <Route path='/login' element={<Login/>}/>
           <Route path='/profile' element={<Profile/>} />
+          <Route path='/detail/:id' element={<Detail/>} />
         </Routes>
       </BrowserRouter>
   </React.StrictMode>
