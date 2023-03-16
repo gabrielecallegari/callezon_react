@@ -164,9 +164,9 @@ export default function Login(){
             setError(false)
             window.user = mioUtente
             window.isLogged = true
-            router("/")
             console.log("Fatto accesso");
             setUtenti(undefined)
+            router("/")
         }
     }
     function setRegistration(){  
