@@ -5,8 +5,9 @@ import "./Login.css"
 import Database from "../../Database/Database";
 import { v4 as uuidv4 } from 'uuid';
 import { useCookies } from 'react-cookie';
+import { useNavigate } from "react-router-dom";
 
-export default function Login(props){
+export default function Login(){
 
     const [ error , setError] = useState(false)
 
@@ -28,6 +29,8 @@ export default function Login(props){
     const nextYear = new Date();
 
     const current = new Date();
+
+    const router = useNavigate()
 
     nextYear.setFullYear(current.getFullYear() + 5);
 
@@ -113,9 +116,9 @@ export default function Login(props){
                 setError(false)
                 setCookies("name", user, {expires: nextYear})
                 setCookies("id",window.user.id_documento, {expires: nextYear})
-                props.callback(false,user)
                 window.isLogged = true
                 console.log("Fatto accesso");
+                router("/")
             }
         }else{
             
@@ -161,7 +164,7 @@ export default function Login(props){
             setError(false)
             window.user = mioUtente
             window.isLogged = true
-            props.callback(false,user)
+            router("/")
             console.log("Fatto accesso");
             setUtenti(undefined)
         }

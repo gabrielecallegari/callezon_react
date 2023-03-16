@@ -8,6 +8,7 @@ import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import Card from "./Card/Card";
 import NewCard from "./NewCard/NewCard";
 import NewAddress from "./NewAddress/NewAddress";
+import { useNavigate } from "react-router-dom";
 
 
 export default function Profile(props){
@@ -27,6 +28,8 @@ export default function Profile(props){
     const [ cartaLabel , setCartaLabel ] = useState("Modifica i dati")
 
     const [ indirizzoLabel , setIndirizzoLabel ] = useState("Modifica l'indirizzo")
+
+    const router = useNavigate()
 
     useEffect(()=>{
         if(user===undefined){
@@ -50,7 +53,7 @@ export default function Profile(props){
             setVisible(false)
             window.isLogged=false
             removeCookies("name")
-            props.callback(false,"Login")
+            router("/")
         }
     }
 
