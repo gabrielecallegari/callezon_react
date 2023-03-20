@@ -208,6 +208,11 @@ img {
     align-items: center;
 }
 
+.laptop--fav{
+    display: flex;
+    align-items: center;
+}
+
 @media screen and (max-width: 1440px) {
     
 }
@@ -259,5 +264,10 @@ img {
     .home--tech-top{
         display: grid;
         grid-template-columns: repeat(1,1fr);
+    }
+
+    .laptop--rate{
+        display: grid;
+        align-items: center;
     }
 }

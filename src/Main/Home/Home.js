@@ -87,9 +87,13 @@ export default function Home(){
                         <label className="laptop--label">Prezzo: {element.price}€</label>
                         <label className="laptop--label">Sconto: <b>{sconto}%</b></label>
                         <div className="laptop--rate">
-                            <label className="laptop--label">Valutazione: {rounded}</label>
-                            <FontAwesomeIcon icon={faStar} className="home--pp-icon"/>
+                            <label className="laptop--label">Valutazione: </label>
+                            <div className="laptop--fav">
+                                <label className="laptop--label">{rounded}</label>
+                                <FontAwesomeIcon icon={faStar} className="home--pp-icon"/>
+                            </div>
                         </div>
+                        <label className="laptop--label">Qta. Disponibile: {element.stock}</label>
                     </div>
                </div>
             </div>

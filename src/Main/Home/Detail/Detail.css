@@ -1,0 +1,23 @@
+.detail{
+    margin: 10px;
+    text-align: center;
+}
+
+.detail--title{
+    margin: 0;
+    font-size: 25px;
+    width: 100%;
+}
+
+.detail--back{
+    border: 2px solid blue;
+    width: fit-content;
+    padding: 7px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.detail--header{
+    display: flex;
+    text-align: center;
+}
