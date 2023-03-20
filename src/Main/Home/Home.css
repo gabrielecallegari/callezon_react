@@ -4,7 +4,7 @@
 }
 
 .carrello{
-    position: absolute;
+    position: fixed;
     bottom: 20px;
     right: 20px;
     background-color: blue;
@@ -68,8 +68,8 @@
     margin-top: 10px;
     border-radius: 5px;
     float: left;
-    width:  350px;
-    height: 200px;
+    width:  90%;
+    height:  200px;
     object-fit: cover;
     display: block;
     margin-left: auto;
@@ -107,6 +107,11 @@ b{
     padding-bottom: 15px;
     overflow: auto;
     padding-left: 15px;
+}
+
+.home--tech{
+    margin: 20px;
+    margin-top: 30px;
 }
 
 img {
@@ -157,6 +162,52 @@ img {
 }
 
 
+.home--tech-top{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
+
+.laptop--card{
+    box-shadow: 0px 3px 10px 3px rgba(128, 128, 128, 0.673);
+    margin: 15px;
+    cursor: pointer;
+    text-align: center;
+    padding: 10px;
+    display: grid;
+    justify-content: center;
+}
+
+.laptop--img{
+    margin-top: 10px;
+    border-radius: 5px;
+    float: left;
+    width:  50%;
+    height:  200px;
+    object-fit: cover;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.laptop--main{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.laptop--data{
+    width: 50%;
+    display: grid;
+    font-size: 20px;
+    text-align: left;
+    margin-left: 20px;
+}
+
+.laptop--rate{
+    display: flex;
+    align-items: center;
+}
+
 @media screen and (max-width: 1440px) {
     
 }
@@ -203,5 +254,10 @@ img {
 
     .home--top::-webkit-scrollbar{
         display: none; 
+    }
+
+    .home--tech-top{
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
     }
 }

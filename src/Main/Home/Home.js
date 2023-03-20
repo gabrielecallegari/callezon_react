@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import './Home.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping , faStar } from "@fortawesome/free-solid-svg-icons";
@@ -7,20 +7,6 @@ import { useNavigate } from "react-router-dom";
 
 export default function Home(){
     const router = useNavigate()
-    
-    useEffect(()=>{
-        /*
-        if(products === undefined){
-            fetch('https://dummyjson.com/products/')
-            .then(res => res.json())
-            .then(res => {
-                setProducts(res.products)
-                window.prod=res.products
-            }) 
-        }
-        */
-       // eslint-disable-next-line
-    },[])
 
     const [ carrello , setCarrello ] = useState(0)
 
@@ -28,6 +14,13 @@ export default function Home(){
         setCarrello(old=> old+1)
     }
 
+    var laptop4 = []
+    for(let index = 0; index<prodotti.products.length; index++){
+        if(prodotti.products[index].category === "laptops"){
+            laptop4.push(prodotti.products[index])
+            if(laptop4.length === 4) break
+        }
+    }
     
     var primoPiano = prodotti.products.filter(obj => {
         return obj.id === 1 || obj.id===2 || obj.id===4
@@ -82,6 +75,27 @@ export default function Home(){
         )
     })
 
+    const laptop = laptop4.map(element => {
+        const sconto = parseInt(element.discountPercentage)
+        const rounded = Math.round(element.rating * 10) / 10
+        return (
+            <div key={element.id} className="laptop--card" onClick={()=>router("/detail/"+element.id)}>
+               <label className="home--pp-title">{element.title}</label> 
+               <div className="laptop--main"> 
+                    <img className="laptop--img" alt="immagine-laptop" src={element.thumbnail}></img>
+                    <div className="laptop--data">
+                        <label className="laptop--label">Prezzo: {element.price}€</label>
+                        <label className="laptop--label">Sconto: <b>{sconto}%</b></label>
+                        <div className="laptop--rate">
+                            <label className="laptop--label">Valutazione: {rounded}</label>
+                            <FontAwesomeIcon icon={faStar} className="home--pp-icon"/>
+                        </div>
+                    </div>
+               </div>
+            </div>
+        )
+    })
+
     return (
         <div className="home">
           <div className="carrello" onClick={carrelloClick}>
@@ -105,6 +119,13 @@ export default function Home(){
             </div>
           </div>
         
+          <div className="home--tech">
+            <label className="home--pp-label">Il meglio dei Laptop</label>
+            <div className="home--tech-top">
+                {laptop}
+            </div>
+          </div> 
+
         </div>
     )
 }
