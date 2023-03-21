@@ -42,10 +42,6 @@ function App() {
               <FontAwesomeIcon icon={faCircleUser} className="header--icon"/>
             </div>
         </div>
-        
-      
-
-        
     </div>
   );
 }

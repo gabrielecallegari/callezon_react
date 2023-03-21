@@ -9,8 +9,6 @@ import Cart from "./Cart/Cart";
 export default function Home(){
     const router = useNavigate()
 
-    
-
     var laptop4 = []
     for(let index = 0; index<prodotti.products.length; index++){
         if(prodotti.products[index].category === "laptops"){

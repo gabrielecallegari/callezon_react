@@ -157,6 +157,11 @@ c{
 
     .detail--galleria{
         width: 100%;
+        padding-bottom: 15px;
+    }
+
+    .detail--galleria::-webkit-scrollbar{
+        display: none; 
     }
 
     .detail--data {

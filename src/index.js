@@ -10,6 +10,7 @@ import Home from './Main/Home/Home';
 import Profile from './Main/Profile/Profile'
 import Detail from './Main/Home/Detail/Detail'
 import CartDetails from './Main/CartDetails/CartDetails';
+import Footer from './Main/Footer/Footer';
 
 
 window.isLogged = false
@@ -27,6 +28,7 @@ root.render(
           <Route path='/cart' element={<CartDetails/>} />
           <Route path='/detail/:id' element={<Detail/>} />
         </Routes>
+        <Footer/>
       </BrowserRouter>
   </React.StrictMode>
 );
