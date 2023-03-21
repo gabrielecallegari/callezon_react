@@ -1,6 +1,7 @@
 .detail{
     margin: 10px;
     text-align: center;
+    position: relative;
 }
 
 .detail--title{
@@ -9,15 +10,160 @@
     width: 100%;
 }
 
+p{
+    color: rgb(86, 86, 86);
+}
+
 .detail--back{
     border: 2px solid blue;
     width: fit-content;
     padding: 7px;
     border-radius: 10px;
     cursor: pointer;
+    position: absolute;
+    top: 0px;
+    left: 0px;
 }
 
 .detail--header{
     display: flex;
     text-align: center;
+    align-items: center;
+}
+
+.detail--main{
+    width: 100%;
+    display: flex;
+}
+
+.detail--galleria-immagine{
+    border-radius: 5px;
+    float: left;
+    width:  430px;
+    height:  400px;
+    object-fit: contain;
+    display: block;
+}
+
+.detail--immagini{
+    margin-top: 20px;
+    margin-left: 20px;
+    display: grid;
+    width: 48%;
+}
+
+.detail--data{
+    width: 48%;
+    margin-top: 30px;
+    text-align: left;
+    display: grid;
+    height: fit-content;
+}
+
+.detail--galleria{
+    width:  440px;
+    display: flex;
+    overflow: auto;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    margin-left: -10px;    
+}
+
+.data--description{
+    font-size: 25px;
+}
+
+.data--label{
+    font-size: 20px;
+    color: rgb(86, 86, 86);
+}
+
+.data--add{
+    width: fit-content;
+    padding: 10px;
+    background-color: blue;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.data--add-to{
+    margin-top: 40px;
+}
+
+c{
+    font-size: 25px;
+    color: black;
+}
+
+.galleria{
+    box-shadow: 0px 3px 10px 3px rgba(128, 128, 128, 0.673);
+    width: auto;
+    margin-right: 20px;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    display: grid;
+    margin-top: 10px;
+}
+
+.galleria:last-child{
+    margin-right: 10px;
+}
+
+.galleria--immagine{
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    float: center;
+    width:  50px;
+    height: 50px;
+    object-fit: cover;
+    display: block;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+
+@media screen and (max-width: 1440px) {
+    
+}
+
+@media screen and (max-width: 1024px) {
+    
+}
+
+@media screen and (max-width: 768px) {
+    
+}
+
+@media screen and (max-width: 520px) {
+    .detail--main{
+        display: grid;
+    }
+
+    .detail--immagini{
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .detail--galleria-immagine{
+        width:  100%;
+        height:  300px;
+        
+    }
+
+    .detail--galleria{
+        width: 100%;
+    }
+
+    .detail--data {
+        width: 100%;
+    }
+
+    .galleria:first-child{
+        margin-left: 10px;
+    }
 }

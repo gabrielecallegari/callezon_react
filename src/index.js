@@ -9,6 +9,7 @@ import Login from './Main/Login/Login'
 import Home from './Main/Home/Home';
 import Profile from './Main/Profile/Profile'
 import Detail from './Main/Home/Detail/Detail'
+import CartDetails from './Main/CartDetails/CartDetails';
 
 
 window.isLogged = false
@@ -23,6 +24,7 @@ root.render(
           <Route path="*" element={<PageNotFound />} />
           <Route path='/login' element={<Login/>}/>
           <Route path='/profile' element={<Profile/>} />
+          <Route path='/cart' element={<CartDetails/>} />
           <Route path='/detail/:id' element={<Detail/>} />
         </Routes>
       </BrowserRouter>

@@ -1,18 +1,15 @@
-import React, {  useState } from "react";
+import React from "react";
 import './Home.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCartShopping , faStar } from "@fortawesome/free-solid-svg-icons";
+import {  faStar } from "@fortawesome/free-solid-svg-icons";
 import prodotti from "../../Database/Prodotti";
 import { useNavigate } from "react-router-dom";
+import Cart from "./Cart/Cart";
 
 export default function Home(){
     const router = useNavigate()
 
-    const [ carrello , setCarrello ] = useState(0)
-
-    function carrelloClick(){
-        setCarrello(old=> old+1)
-    }
+    
 
     var laptop4 = []
     for(let index = 0; index<prodotti.products.length; index++){
@@ -102,13 +99,7 @@ export default function Home(){
 
     return (
         <div className="home">
-          <div className="carrello" onClick={carrelloClick}>
-            <div className="carrello--div">
-                <FontAwesomeIcon icon={faCartShopping} className="shoppingcart"/>
-                {carrello>0 &&  <label className="carrello--size">{carrello}</label>}
-            </div>
-          </div>
-
+            <Cart/>
           <div className="home--primo-piano">
             <label className="home--pp-label">Prodotti in primo piano</label>
             <div className="home--pp">
