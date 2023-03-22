@@ -5,6 +5,7 @@ import {  faStar } from "@fortawesome/free-solid-svg-icons";
 import prodotti from "../../Database/Prodotti";
 import { useNavigate } from "react-router-dom";
 import Cart from "./Cart/Cart";
+import Footer from '../Footer/Footer'
 
 export default function Home(){
     const router = useNavigate()
@@ -118,7 +119,7 @@ export default function Home(){
                 {laptop}
             </div>
           </div> 
-
+          <Footer />
         </div>
     )
 }

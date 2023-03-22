@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import './Detail.css'
 import prodotti from '../../../Database/Prodotti'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft, faStar } from "@fortawesome/free-solid-svg-icons";
 import Cart from "../Cart/Cart";
 
 export default function Detail(){
@@ -55,6 +55,11 @@ export default function Detail(){
                     <label className="data--label">Prezzo: <c>{prodotto[0].price}€</c></label>
                     <label className="data--label">Sconto applicato: <c><b>{prodotto[0].discountPercentage}%</b></c></label>
                     <label className="data--label">Qta. Disponibile: <c>{prodotto[0].stock}</c></label>
+                    <div className="data--rate">
+                        <label className="data--label">Valutazione: <c>{prodotto[0].rating}</c></label>
+                        <FontAwesomeIcon icon={faStar} className="home--pp-icon"/>
+                    </div>
+
                     <div className="data--add-to">
                         <label className="data--add" onClick={add}>Aggiungi al carrello</label>
                     </div>

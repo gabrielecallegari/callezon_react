@@ -7,7 +7,7 @@ import './Footer.css'
 export default function Footer(){
     return(
         <div className="footer">
-            <label className="footer--label">Created by <a href="https://github.com/gabrielecallegari" className="footer--a">Gabriele Callegari</a></label>
+            <label className="footer--label">© <a href="https://github.com/gabrielecallegari" className="footer--a">Gabriele Callegari</a></label>
             <div className="footer--social">
                 <a href="https://github.com/gabrielecallegari" className="footer--git">
                     <FontAwesomeIcon icon={faGithub} className="footer--icon"/>
