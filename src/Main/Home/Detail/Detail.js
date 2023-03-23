@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import './Detail.css'
 import prodotti from '../../../Database/Prodotti'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft, faStar } from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft, faMinus, faPlus, faStar } from "@fortawesome/free-solid-svg-icons";
 import Cart from "../Cart/Cart";
 
 export default function Detail(){
@@ -12,6 +12,7 @@ export default function Detail(){
     // eslint-disable-next-line
     const [ prodotto , setProdotto ] = useState(prodotti.products.filter(element => element.id===parseInt(id))) 
     const [ immagine , setImmagine ] = useState(prodotto[0].thumbnail)
+    const [ quant , setQuant ] = useState(1)
 
     // eslint-disable-next-line
     const [ val , setVal ] = useState(window.cart === undefined ? 0 : window.cart)
@@ -19,6 +20,18 @@ export default function Detail(){
     useEffect(()=>{
         if(id>30) router("*")
     })
+
+    function plus(){
+        if(quant !== prodotto[0].stock){
+            setQuant(old => old + 1 )
+        }
+    }
+
+    function minus(){
+        if(quant !== 1){
+            setQuant(old => old - 1 )
+        }
+    }
 
     const immagini = prodotto[0].images.map(element => {
         return (
@@ -58,6 +71,14 @@ export default function Detail(){
                     <div className="data--rate">
                         <label className="data--label">Valutazione: <c>{prodotto[0].rating}</c></label>
                         <FontAwesomeIcon icon={faStar} className="home--pp-icon"/>
+                    </div>
+                    <div className="data--qua">
+                        <label className="data--label">Seleziona quantità:</label>
+                        <div className="data--number">
+                            <FontAwesomeIcon icon={faMinus} className="data--icon" onClick={minus} />
+                            <label className="data--selected"><c>{quant}</c></label>
+                            <FontAwesomeIcon icon={faPlus} className="data--icon" onClick={plus} />
+                        </div>
                     </div>
 
                     <div className="data--add-to">

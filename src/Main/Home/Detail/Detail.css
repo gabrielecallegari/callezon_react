@@ -98,6 +98,30 @@ p{
     align-items: center;
 }
 
+.data--qua{
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.data--number{
+    padding: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.data--selected{
+    padding: 5px;
+}
+
+.data--icon{
+    padding: 10px;
+    background-color: blue;
+    color: white;
+    border-radius: 100px;
+    cursor: pointer;
+}
+
 c{
     font-size: 25px;
     color: black;
