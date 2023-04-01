@@ -1,0 +1,19 @@
+.selected{
+    box-shadow: 0px 3px 10px 3px blue;
+    width: auto;
+    margin-right: 20px;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    display: grid;
+    margin-top: 10px;
+    transition: 0.5s;
+}
+
+.selected:first-child{
+    margin-left: 15px;
+}
+
+.selected:last-child{
+    margin-right: 15px;
+}

@@ -5,6 +5,7 @@ import prodotti from '../../../Database/Prodotti'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faMinus, faPlus, faStar } from "@fortawesome/free-solid-svg-icons";
 import Cart from "../Cart/Cart";
+import style from './Detail.module.css'
 
 export default function Detail(){
     const { id } = useParams()
@@ -34,8 +35,10 @@ export default function Detail(){
     }
 
     const immagini = prodotto[0].images.map(element => {
+        const st = element === immagine? style.selected : "galleria"
+
         return (
-            <div className="galleria" key={element} onClick={()=>{setImmagine(element)}}>
+            <div className={st} key={element} onClick={()=>{setImmagine(element)}}>
                 <img alt="elemento" src={element} className="galleria--immagine"/>
             </div>
         )
