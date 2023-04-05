@@ -11,7 +11,7 @@ function App() {
   // eslint-disable-next-line
   const [ cookies , setCookies ] = useCookies(["name"])
   const router = useNavigate()
-  
+  if( window.cart_products === undefined ) window.cart_products=[]
 
   useEffect(()=>{
     

@@ -94,6 +94,8 @@ b{
     padding-bottom: 15px;
     overflow: auto;
     padding-left: 15px;
+    margin-right: -15px;
+    margin-left: -20px;
 }
 
 .home--tech{
@@ -113,6 +115,10 @@ img {
     text-align: center;
     cursor: pointer;
     display: grid;
+}
+
+.top10:last-child{
+    margin-right: 10px;
 }
 
 .top10--title{

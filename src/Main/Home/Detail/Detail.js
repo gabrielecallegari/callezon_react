@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faMinus, faPlus, faStar } from "@fortawesome/free-solid-svg-icons";
 import Cart from "../Cart/Cart";
 import style from './Detail.module.css'
+import Added from "./Added/Added";
 
 export default function Detail(){
     const { id } = useParams()
@@ -13,6 +14,7 @@ export default function Detail(){
     // eslint-disable-next-line
     const [ prodotto , setProdotto ] = useState(prodotti.products.filter(element => element.id===parseInt(id))) 
     const [ immagine , setImmagine ] = useState(prodotto[0].thumbnail)
+    const [ transition, setTransition ] = useState(false)
     const [ quant , setQuant ] = useState(1)
 
     // eslint-disable-next-line
@@ -47,10 +49,40 @@ export default function Detail(){
     function add(){
         setVal(old => old +1)
         window.cart = val +1
+        prodotto[0].quant = quant
+        
+        window.cart_products.push(prodotto[0])
+        if(window.cart_products.length>1){
+            var del = []
+            var count = 0
+            for(let i = 0; i<window.cart_products.length; i++){
+                if(window.cart_products[i].id === prodotto[0].id){
+                    count++
+                    if(count >1){
+                        console.log("QUANT "+ quant);
+                        console.log("qui");
+                        window.cart_products[i].quant += prodotto[0].quant
+                        
+                        del.push(i)
+                    }
+                }   
+            }
+            for (let index = 0; index < del.length; index++) {
+                window.cart_products.splice(del[index],1)
+            }
+            
+        }
+        console.log(window.cart_products);
+        setTimeout(()=>{
+            setTransition(false)
+        },800)
+        setTransition(true)
     }
 
     return (
         <div className="detail">
+            {transition && <Added />}
+            
             <Cart valore={val}/>
             <div className="detail--header">
                 <div className="detail--back" onClick={()=>router("/")}>
